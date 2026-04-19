@@ -43,5 +43,5 @@
 ---
 
 <div align="center">
-  ⚡ *"I am the one who knocks... out bugs"* ⚡
+
 </div>
