@@ -32,9 +32,7 @@
 
 ### 📦 Projects I'm Cooking
 
-- **[Project Name 1](#)** – What it does (coming soon)
-- **[Project Name 2](#)** – Another cool thing (in progress)
-- **[Project Name 3](#)** – Planning stage
+
 
 ---
 
