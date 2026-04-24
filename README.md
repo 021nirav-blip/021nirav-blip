@@ -1,26 +1,33 @@
-<div align="center">
-  <img src="https://media.giphy.com/media/3o7abB06u9bNzA8LC8/giphy.gif" alt="Breaking Bad RV" width="600"/>
-  
-  ### 💨 "Yeah Mr. White... yeah code!" 🔥
-  ### 🧪 "Let's cook codes & cool projects"
-</div>
+## 🕸️ Your Friendly Neighborhood Developer
+
+With great power comes great *debugging*.
+
+- 🦸‍♂️ Alter ego: Student by day, coder by night
+- 🕷️ Spider-sense: Detects bugs *before* they crash production
+- ⌨️ Got bitten by a radioactive... **keyboard**
+
+> *"I missed the part where that's my problem"*  
+> — Me, before realizing the bug was my fault.
 
 ---
 
-## 👋 Hi, I'm Nirav  
-**Student Developer | Code Chemist | Learning to Cook Cool Projects**
+## 👋 Hi, I'm Nirav
+
+**Student Developer| Your Friendly Neighborhood Developer | Web-Slinger in Training**
 
 ---
 
-### 🧪 About Me  
-- 🎓 Student  
-- 🔭 Learning web development  
-- 🌱 Currently studying: **JavaScript, React, Git**  
+### 🧪 About Me
+
+- 🎓 Student
+- 🔭 Learning web development
+- 🌱 Currently studying: **JavaScript, React, Git**
 - 🤝 Open to collaborate on beginner-friendly projects
+- 🕷️ Spider-sense status: *Activated (but only after the bug hits production)*
 
 ---
 
-### 🛠️ My Tech Lab (Learning in Progress)
+### 🛠️ My Web-Shooters (Tech Lab)
 
 ![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=black)
 ![React](https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=black)
@@ -30,18 +37,17 @@
 
 ---
 
-### 📦 Projects I'm Cooking
-
+### 📦 My Rogues Gallery (Projects)
 
 
 ---
 
-### 📫 Connect With Me
+### 📫 Swing By & Connect
 
 [![GitHub](https://img.shields.io/badge/-GitHub-181717?logo=github&logoColor=white)](https://github.com/021nirav-blip)
 
 ---
 
 <div align="center">
-
+  *"I missed the part where that's my merge conflict"* 🕸️
 </div>
