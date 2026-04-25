@@ -1,4 +1,8 @@
-## 🕸️ Your Friendly Neighborhood Developer
+# 🕸️ Your Friendly Neighborhood Developer
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/021nirav-blip/021nirav-blip/main/animation.svg" width="400" alt="Spider-Man Swinging" />
+</div>
 
 With great power comes great *debugging*.
 
@@ -13,21 +17,23 @@ With great power comes great *debugging*.
 
 ## 👋 Hi, I'm Nirav
 
-**Student Developer| Your Friendly Neighborhood Developer | Web-Slinger in Training**
+**Student Developer | Web-Slinger in Training**
 
 ---
 
 ### 🧪 About Me
 
-- 🎓 Student
-- 🔭 Learning web development
-- 🌱 Currently studying: **JavaScript, React, Git**
-- 🤝 Open to collaborate on beginner-friendly projects
-- 🕷️ Spider-sense status: *Activated (but only after the bug hits production)*
+| Question | Answer |
+|----------|--------|
+| 🎓 Status | Student |
+| 🔭 Focus | Web Development |
+| 🌱 Learning | JavaScript, React, Git |
+| 🤝 Collaboration | Open to beginner-friendly projects |
+| 🕷️ Spider-Sense | *Activated (after bugs hit production)* |
 
 ---
 
-### 🛠️ My Web-Shooters (Tech Lab)
+### 🛠️ My Web-Shooters
 
 ![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=black)
 ![React](https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=black)
@@ -37,17 +43,25 @@ With great power comes great *debugging*.
 
 ---
 
-### 📦 My Rogues Gallery (Projects)
+### 📦 My Rogues Gallery
 
+| Project | Status | Tech |
+|---------|--------|------|
+| Coming Soon | 🕸️ In Web | - |
 
 ---
 
 ### 📫 Swing By & Connect
 
 [![GitHub](https://img.shields.io/badge/-GitHub-181717?logo=github&logoColor=white)](https://github.com/021nirav-blip)
+[![Portfolio](https://img.shields.io/badge/-Portfolio-0a192f?logo=vercel&logoColor=white)](https://021nirav-blip.github.io/021nirav-blip/)
 
 ---
 
 <div align="center">
   *"I missed the part where that's my merge conflict"* 🕸️
+  
+  ---
+  
+  <sub>⚡ *With great power comes great electricity bill* ⚡</sub>
 </div>
