@@ -1,7 +1,7 @@
 # 🕸️ Your Friendly Neighborhood Developer
 
 <div align="center">
-<img src="[https://cdn.jsdelivr.net/gh/021nirav-blip/021nirav-blip@main/animation.svg](https://raw.githubusercontent.com/021nirav-blip/021nirav-blip/main/animation.svg)" width="400" alt="Spider-Man Swinging" />
+<img src="https://raw.githubusercontent.com/021nirav-blip/021nirav-blip/main/animation.svg" width="400" alt="Spider-Man Swinging" />
 </div>
 
 With great power comes great *debugging*.
