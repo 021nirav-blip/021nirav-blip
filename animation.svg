@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400" fill="none">
+  <foreignObject width="100%" height="100%">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        .container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          color: white;
+          background: transparent;
+        }
+        .web-line {
+          width: 2px;
+          height: 150px;
+          background: rgba(255, 255, 255, 0.4);
+        }
+        .spiderman {
+          width: 150px;
+          animation: swing 3s ease-in-out infinite alternate;
+          transform-origin: top center;
+        }
+        .shadow {
+          width: 100px;
+          height: 8px;
+          background: rgba(0, 0, 0, 0.3);
+          filter: blur(4px);
+          border-radius: 50%;
+          margin-top: 20px;
+          animation: shadowPulse 3s ease-in-out infinite alternate;
+        }
+        .typing-container {
+          margin-top: 20px;
+          height: 20px;
+          position: relative;
+          display: flex;
+          justify-content: center;
+          width: 100%;
+        }
+        .text {
+          position: absolute;
+          overflow: hidden;
+          white-space: nowrap;
+          border-right: 2px solid #ffcc66;
+          width: 0;
+          font-size: 14px;
+          font-weight: bold;
+          color: #ffcc66;
+        }
+        .text-1 { animation: typing1 10s steps(40) infinite; }
+        .text-2 { animation: typing2 10s steps(40) infinite; }
+
+        @keyframes swing {
+          0% { transform: translateY(-15px) rotate(-3deg); }
+          100% { transform: translateY(15px) rotate(3deg); }
+        }
+        @keyframes shadowPulse {
+          0% { transform: scale(1.1); opacity: 0.4; }
+          100% { transform: scale(0.7); opacity: 0.1; }
+        }
+        @keyframes typing1 {
+          0%, 5% { width: 0; border-right-color: #ffcc66; }
+          15%, 40% { width: 100%; border-right-color: #ffcc66; }
+          45%, 100% { width: 0; border-right-color: transparent; }
+        }
+        @keyframes typing2 {
+          0%, 45% { width: 0; border-right-color: transparent; }
+          50%, 55% { width: 0; border-right-color: #ffcc66; }
+          60%, 85% { width: 100%; border-right-color: #ffcc66; }
+          90%, 100% { width: 0; border-right-color: transparent; }
+        }
+      </style>
+      <div class="container">
+        <div class="web-line"></div>
+        <img class="spiderman" src="https://i.ibb.co/XDFkXMx/spiderman-colgado.png" alt="Spider-Man" />
+        <div class="shadow"></div>
+        <div class="typing-container">
+          <span class="text text-1">I'm Nirav, Your Friendly Neighborhood Developer</span>
+          <span class="text text-2">i make cool projects here</span>
+        </div>
+      </div>
+    </div>
+  </foreignObject>
+</svg>
