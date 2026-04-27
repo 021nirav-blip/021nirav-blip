@@ -8,7 +8,7 @@ With great power comes great *debugging*.
 
 - 🦸‍♂️ Alter ego: Student by day, coder by night
 - 🕷️ Spider-sense: Detects bugs *before* they crash production
-- ⌨️ Got bitten by a radioactive... **keyboard**
+- ⌨️ Got bitten by a radioactive... **bug**
 
 > *"I missed the part where that's my problem"*  
 > — Me, before realizing the bug was my fault.
