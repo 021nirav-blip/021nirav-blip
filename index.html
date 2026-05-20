@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nirav | Portfolio</title>
+    <title>Nirav Sharma · Spider-Verse Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&family=Ruslan+Display&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ruslan+Display&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* ========== SPIDER-VERSE DESIGN SYSTEM ========== */
         :root {
-            --primary-red: #e62429;
-            --primary-blue: #003764;
-            --accent-gold: #ffcc66;
-            --glass-bg: rgba(10, 25, 47, 0.7);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --font-heading: 'Ruslan Display', cursive;
-            --font-main: 'Outfit', sans-serif;
-            --bg-dark: #0a192f;
+            --spider-red: #e62429;
+            --spider-blue: #0066cc;
+            --spider-gold: #ffcc00;
+            --spider-dark: #0a0a0f;
+            --spider-card: rgba(15, 15, 25, 0.85);
+            --font-display: 'Ruslan Display', cursive;
+            --font-body: 'Space Grotesk', monospace;
         }
 
         * {
@@ -26,191 +26,256 @@
         }
 
         body {
-            font-family: var(--font-main);
-            background: var(--bg-dark);
-            color: white;
-            line-height: 1.6;
+            background: var(--spider-dark);
+            font-family: var(--font-body);
+            color: #e0e0e0;
             overflow-x: hidden;
+            position: relative;
         }
 
-        .layout-container {
-            display: flex;
-            flex-direction: row;
-            min-height: 100vh;
+        /* Comic halftone background */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(rgba(230, 36, 41, 0.08) 2px, transparent 2px);
+            background-size: 35px 35px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Web pattern overlay */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.04"><path d="M10 50 L90 50 M50 10 L50 90 M30 30 L70 70 M70 30 L30 70" stroke="white" stroke-width="1"/><circle cx="50" cy="50" r="40" fill="none" stroke="white" stroke-width="0.8"/></svg>');
+            background-repeat: repeat;
+            background-size: 120px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Main layout - ASYMMETRICAL */
+        .portfolio {
+            position: relative;
+            z-index: 2;
             max-width: 1400px;
             margin: 0 auto;
             padding: 2rem;
-            gap: 4rem;
-            align-items: center;
+            display: flex;
+            flex-direction: row;
+            gap: 3rem;
+            min-height: 100vh;
+            align-items: flex-start;
         }
 
-        /* Animation Section */
-        .animation-side {
+        /* LEFT COLUMN - Animation (sticky) */
+        .animation-col {
             flex: 1;
+            position: sticky;
+            top: 2rem;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            position: sticky;
-            top: 2rem;
-            height: calc(100vh - 4rem);
+            min-height: 500px;
         }
 
         .scene {
             position: relative;
             width: 100%;
-            height: 500px;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
         }
 
         .web-line {
-            position: absolute;
-            top: 0;
-            left: 50%;
             width: 2px;
-            height: 250px;
-            background: rgba(255, 255, 255, 0.4);
-            transform: translateX(-50%);
-            z-index: 1;
-        }
-
-        .spiderman-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            z-index: 2;
-            transform: translateY(50px);
+            height: 180px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(230,36,41,0.5));
+            box-shadow: 0 0 8px var(--spider-red);
         }
 
         .spiderman {
-            width: 220px; /* Resized as requested */
+            width: 220px;
+            margin-top: -5px;
             filter: drop-shadow(0 20px 30px rgba(0,0,0,0.5));
             animation: swing 3s ease-in-out infinite alternate;
             transform-origin: top center;
-            cursor: pointer;
-            transition: filter 0.3s ease, transform 0.3s ease;
+            transition: filter 0.3s ease;
         }
 
         .spiderman:hover {
-            filter: drop-shadow(0 0 25px var(--primary-red));
+            filter: drop-shadow(0 0 25px var(--spider-red));
         }
 
         .shadow {
             width: 140px;
             height: 10px;
-            margin-top: 40px;
-            background-color: rgba(0, 0, 0, 0.4);
+            margin-top: 20px;
+            background: rgba(0,0,0,0.4);
             filter: blur(8px);
             border-radius: 50%;
             animation: shadowPulse 3s ease-in-out infinite alternate;
         }
 
-        .dialogue-container {
-            height: 40px;
+        .typing-area {
             margin-top: 30px;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-        }
-
-        .typing-text {
-            position: absolute;
-            overflow: hidden;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--spider-gold);
+            border-right: 2px solid var(--spider-gold);
             white-space: nowrap;
-            border-right: 3px solid var(--accent-gold);
+            overflow: hidden;
+            animation: typing 8s steps(40, end) infinite, blink 0.8s step-end infinite;
             width: 0;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--accent-gold);
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            font-weight: 500;
         }
 
-        .text-1 { animation: typing1 10s steps(40) infinite; }
-        .text-2 { animation: typing2 10s steps(40) infinite; }
-
-        /* Profile Content Section */
-        .content-side {
+        /* RIGHT COLUMN - Content */
+        .content-col {
             flex: 1.5;
-            padding: 2rem;
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border-radius: 30px;
-            border: 1px solid var(--glass-border);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            animation: fadeInUp 1s ease-out;
-        }
-
-        h2 {
-            font-family: var(--font-heading);
-            font-size: 2.5rem;
-            color: var(--accent-gold);
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid var(--primary-red);
-            padding-bottom: 0.5rem;
-            display: inline-block;
-        }
-
-        .subtitle {
-            font-style: italic;
-            color: #8892b0;
-            margin-bottom: 2rem;
-            font-size: 1.2rem;
-        }
-
-        ul {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-
-        li {
-            margin-bottom: 1rem;
             display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.1rem;
+            flex-direction: column;
+            gap: 2rem;
         }
 
-        blockquote {
-            background: rgba(230, 36, 41, 0.1);
-            border-left: 4px solid var(--primary-red);
-            padding: 1.5rem;
-            margin: 2rem 0;
-            border-radius: 0 15px 15px 0;
-            font-style: italic;
-            color: #ccd6f6;
+        /* Comic-style panels */
+        .panel {
+            background: var(--spider-card);
+            backdrop-filter: blur(12px);
+            border-radius: 24px;
+            padding: 1.8rem;
+            border: 1px solid rgba(230, 36, 41, 0.4);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease-out backwards;
         }
 
-        .tech-badges {
+        .panel:hover {
+            border-color: var(--spider-gold);
+            transform: translateY(-4px);
+        }
+
+        .panel:nth-child(1) { animation-delay: 0.1s; }
+        .panel:nth-child(2) { animation-delay: 0.2s; }
+        .panel:nth-child(3) { animation-delay: 0.3s; }
+        .panel:nth-child(4) { animation-delay: 0.4s; }
+        .panel:nth-child(5) { animation-delay: 0.5s; }
+
+        .panel-title {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            color: var(--spider-gold);
+            border-left: 5px solid var(--spider-red);
+            padding-left: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        /* Skills badges */
+        .skills-flex {
             display: flex;
             flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill-badge {
+            background: linear-gradient(135deg, rgba(230,36,41,0.2), rgba(0,102,204,0.15));
+            border: 1px solid rgba(230,36,41,0.5);
+            border-radius: 40px;
+            padding: 0.5rem 1.2rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .skill-badge:hover {
+            border-color: var(--spider-gold);
+            transform: translateY(-3px);
+            background: rgba(230,36,41,0.3);
+        }
+
+        /* Projects grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .project-card {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            padding: 1.2rem;
+            border-bottom: 3px solid var(--spider-red);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateX(8px);
+            border-bottom-color: var(--spider-gold);
+        }
+
+        .project-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--spider-red);
+            margin-bottom: 0.3rem;
+        }
+
+        .project-tech {
+            font-size: 0.7rem;
+            color: var(--spider-gold);
+            margin-bottom: 0.8rem;
+        }
+
+        .project-desc {
+            font-size: 0.85rem;
+            color: #b0b0c0;
+            line-height: 1.4;
+        }
+
+        /* Lists */
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
             gap: 10px;
-            margin-top: 1rem;
         }
 
-        .tech-badges img {
-            height: 28px;
-            transition: transform 0.3s ease;
+        /* Contact links */
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            margin-top: 0.5rem;
         }
 
-        .tech-badges img:hover {
-            transform: translateY(-5px);
+        .contact-links a {
+            color: var(--spider-gold);
+            text-decoration: none;
+            transition: all 0.2s;
         }
 
-        hr {
-            border: 0;
-            height: 1px;
-            background: linear-gradient(to right, transparent, var(--glass-border), transparent);
-            margin: 2rem 0;
+        .contact-links a:hover {
+            color: var(--spider-red);
+            transform: translateY(-2px);
+            display: inline-block;
         }
 
         /* Animations */
         @keyframes swing {
-            0% { transform: translateY(-20px) rotate(-3deg); }
-            100% { transform: translateY(20px) rotate(3deg); }
+            0% { transform: translateY(-15px) rotate(-3deg); }
+            100% { transform: translateY(15px) rotate(3deg); }
         }
 
         @keyframes shadowPulse {
@@ -218,148 +283,154 @@
             100% { transform: scale(0.7); opacity: 0.1; }
         }
 
-        @keyframes typing1 {
-            0%, 5% { width: 0; border-right-color: var(--accent-gold); }
-            15%, 40% { width: 100%; border-right-color: var(--accent-gold); }
-            45%, 100% { width: 0; border-right-color: transparent; }
-        }
-
-        @keyframes typing2 {
-            0%, 45% { width: 0; border-right-color: transparent; }
-            50%, 55% { width: 0; border-right-color: var(--accent-gold); }
-            60%, 85% { width: 100%; border-right-color: var(--accent-gold); }
-            90%, 100% { width: 0; border-right-color: transparent; }
-        }
-
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .layout-container {
-                flex-direction: column;
-                padding: 1rem;
-            }
+        @keyframes typing {
+            0% { width: 0; }
+            20% { width: 100%; }
+            80% { width: 100%; }
+            100% { width: 0; }
+        }
 
-            .animation-side {
-                position: relative;
-                height: auto;
-                top: 0;
-                margin-bottom: 2rem;
-            }
+        @keyframes blink {
+            0%, 100% { border-color: var(--spider-gold); }
+            50% { border-color: transparent; }
+        }
 
-            .scene {
-                height: 400px;
-            }
-
-            .web-line { height: 150px; }
-
-            .spiderman { width: 180px; }
-            
-            .content-side {
-                padding: 1.5rem;
-            }
+        /* Responsive */
+        @media (max-width: 900px) {
+            .portfolio { flex-direction: column; }
+            .animation-col { position: relative; top: 0; min-height: auto; margin-bottom: 1rem; }
+            .spiderman { width: 160px; }
+            .web-line { height: 120px; }
         }
 
         @media (max-width: 600px) {
-            h2 { font-size: 1.8rem; }
-            .spiderman { width: 150px; }
-            .dialogue-container { min-width: 100%; }
-            .typing-text { font-size: 0.9rem; }
+            .portfolio { padding: 1rem; }
+            .panel-title { font-size: 1.4rem; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .typing-area { font-size: 0.7rem; white-space: normal; animation: none; border-right: none; width: auto; text-align: center; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { animation: none !important; transition: none !important; }
+            .typing-area { animation: none; border-right: none; width: auto; }
         }
     </style>
 </head>
 <body>
-    <div class="layout-container">
-        <!-- Animation Section -->
-        <section class="animation-side">
-            <div class="scene">
-                <div class="web-line"></div>
-                <div class="spiderman-container">
-                    <img class="spiderman" 
-                         src="https://i.ibb.co/XDFkXMx/spiderman-colgado.png" 
-                         alt="Spider-Man Hanging"
-                         onerror="this.src='https://via.placeholder.com/220x220?text=🕸️'">
-                    <div class="shadow"></div>
-                    <div class="dialogue-container">
-                        <span class="typing-text text-1">I'm Nirav, Your Friendly Neighborhood Developer</span>
-                        <span class="typing-text text-2">i make cool projects here</span>
-                    </div>
+<div class="portfolio">
+    <!-- LEFT COLUMN: Animation -->
+    <div class="animation-col">
+        <div class="scene">
+            <div class="web-line"></div>
+            <img class="spiderman" 
+                 src="https://i.ibb.co/XDFkXMx/spiderman-colgado.png" 
+                 alt="Spider-Man Hanging"
+                 onerror="this.src='https://via.placeholder.com/220x220?text=🕸️'">
+            <div class="shadow"></div>
+            <div class="typing-area">"Your Friendly Neighborhood Developer"</div>
+        </div>
+    </div>
+
+    <!-- RIGHT COLUMN: Content from SKILL.md / Resume -->
+    <div class="content-col">
+        <!-- Hero Panel -->
+        <div class="panel">
+            <div class="panel-title">🕸️ Nirav Sharma</div>
+            <p style="font-size: 1.1rem; margin-bottom: 0.5rem;">Student Developer · AI Explorer · Open Source Contributor</p>
+            <p style="color: #8892b0;">Building AI-powered tools, contributing to open source, and swinging through code one commit at a time.</p>
+            <div class="contact-links" style="margin-top: 1rem;">
+                <a href="mailto:021nirav@gmail.com">📧 021nirav@gmail.com</a>
+                <a href="https://github.com/021nirav-blip" target="_blank">🐙 GitHub</a>
+                <a href="https://linkedin.com/in/nirav-sharma-243258382" target="_blank">🔗 LinkedIn</a>
+                <a href="https://021nirav-blip.github.io/021nirav-blip/" target="_blank">🕸️ Portfolio</a>
+            </div>
+        </div>
+
+        <!-- Skills Panel -->
+        <div class="panel">
+            <div class="panel-title">🕷️ Web-Shooters · Tech Arsenal</div>
+            <div class="skills-flex">
+                <span class="skill-badge">JavaScript (Advanced)</span>
+                <span class="skill-badge">TypeScript</span>
+                <span class="skill-badge">React.js</span>
+                <span class="skill-badge">Next.js</span>
+                <span class="skill-badge">React Native / Expo</span>
+                <span class="skill-badge">HTML5 & CSS3</span>
+                <span class="skill-badge">Gemini API / LLMs</span>
+                <span class="skill-badge">RAG Systems</span>
+                <span class="skill-badge">Git & Jest</span>
+                <span class="skill-badge">Cursor / Claude Code</span>
+            </div>
+        </div>
+
+        <!-- Projects Panel (Rogues Gallery) -->
+        <div class="panel">
+            <div class="panel-title">📦 Rogues Gallery · Signature Projects</div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-name">📝 Lazy Notes</div>
+                    <div class="project-tech">React · TypeScript · Gemini API</div>
+                    <div class="project-desc">AI-powered handwriting-to-text web app converting messy student notes into clean, readable text instantly. Built with Gemma 4 31B API.</div>
+                </div>
+                <div class="project-card">
+                    <div class="project-name">🍎 FoodPolicer</div>
+                    <div class="project-tech">React Native · Next.js · Gemini API · Postgres</div>
+                    <div class="project-desc">AI food intelligence app analyzing ingredients → personalized health score. Junk Budget tracker + Good/Bad/Ugly breakdown system.</div>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- Profile Content Section -->
-        <section class="content-side">
-            <h2>🕸️ Your Friendly Neighborhood Developer</h2>
-            <p class="subtitle">With great power comes great <em>debugging</em>.</p>
-
-            <ul>
-                <li>🦸‍♂️ Alter ego: Student by day, coder by night</li>
-                <li>🕷️ Spider-sense: Detects bugs <em>before</em> they crash production</li>
-                <li>⌨️ Got bitten by a radioactive... <strong>Bug</strong></li>
-            </ul>
-
-            <blockquote>
-                "I missed the part where that's my problem" <br>
-                — Me, before realizing the bug was my fault.
-            </blockquote>
-
-            <hr>
-
-            <h3>👋 Hi, I'm Nirav</h3>
-            <p><strong>Student Developer | Your Friendly Neighborhood Developer | Web-Slinger in Training</strong></p>
-
-            <hr>
-
-            <h3>🧪 About Me</h3>
-            <ul>
-                <li>🎓 Student</li>
-                <li>🔭 Learning web development</li>
-                <li>🌱 Currently studying: <strong>JavaScript, React, Git</strong></li>
-                <li>🤝 Open to collaborate on beginner-friendly projects</li>
-                <li>🕷️ Spider-sense status: <em>Activated (but only after the bug hits production)</em></li>
-            </ul>
-
-            <hr>
-
-            <h3>🛠️ My Web-Shooters (Tech Lab)</h3>
-            <div class="tech-badges">
-                <img src="https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=black" alt="JS">
-                <img src="https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=black" alt="React">
-                <img src="https://img.shields.io/badge/-HTML5-E34F26?logo=html5&logoColor=white" alt="HTML">
-                <img src="https://img.shields.io/badge/-CSS3-1572B6?logo=css3&logoColor=white" alt="CSS">
-                <img src="https://img.shields.io/badge/-Git-F05032?logo=git&logoColor=white" alt="Git">
+        <!-- Open Source + Achievements -->
+        <div class="panel">
+            <div class="panel-title">🌟 Open Source & Achievements</div>
+            <div class="project-card" style="margin-bottom: 1rem;">
+                <div class="project-name">🎵 Sugar Labs · Music Blocks</div>
+                <div class="project-tech">Jan 2026 – Present · Open Source</div>
+                <div class="project-desc">Open-source visual programming platform for music. Fixed audio bugs, improved UI, search optimizations, memory leaks, and Jest test coverage.</div>
             </div>
-
-            <hr>
-
-            <h3>📦 My Rogues Gallery (Projects)</h3>
-            <p style="color: #8892b0;">Coming soon... stay tuned!</p>
-
-            <hr>
-
-            <h3>📫 Swing By & Connect</h3>
-            <a href="https://github.com/021nirav-blip" target="_blank">
-                <img src="https://img.shields.io/badge/-GitHub-181717?logo=github&logoColor=white" alt="GitHub">
-            </a>
-
-            <div style="text-align: center; margin-top: 3rem; font-size: 0.9rem; opacity: 0.6;">
-                *"I missed the part where that's my merge conflict"* 🕸️
+            <div class="skills-flex">
+                <span class="skill-badge">🥇 Gold Medal · SOF Math Olympiad</span>
+                <span class="skill-badge">🏏 District Cricket</span>
+                <span class="skill-badge">🤼 District Kabaddi</span>
             </div>
-        </section>
+        </div>
+
+        <!-- Education -->
+        <div class="panel">
+            <div class="panel-title">🎓 Training Grounds</div>
+            <ul class="info-list">
+                <li>🎓 B.Tech CSE · JECRC University (2025–2029) · Jaipur</li>
+                <li>📚 Class XII (Science) · Pioneer Senior Secondary School (2024) · RBSE</li>
+                <li>📖 Class X · New Look Central School, Partapur (2022) · CBSE</li>
+            </ul>
+        </div>
+
+        <!-- Quote Footer -->
+        <div class="panel" style="text-align: center;">
+            <p style="color: var(--spider-gold); font-style: italic;">🕸️ "With great power comes great electricity bill — and a lot of debugging." 🕸️</p>
+            <p style="color: #666; font-size: 0.7rem; margin-top: 0.8rem;">Swinging through code since 2025 · Friendly Neighborhood Developer</p>
+        </div>
     </div>
-    <script>
-        let clickCount = 0;
-        document.querySelector('.spiderman').addEventListener('click', () => {
+</div>
+
+<script>
+    // Easter egg: 5 clicks on Spidey
+    let clickCount = 0;
+    const spidey = document.querySelector('.spiderman');
+    if (spidey) {
+        spidey.addEventListener('click', () => {
             clickCount++;
             if (clickCount === 5) {
                 alert('🕸️ My spider-sense is tingling... oh wait, that\'s just npm install');
                 clickCount = 0;
             }
         });
-    </script>
+    }
+</script>
 </body>
 </html>
