@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nirav Sharma — Friendly Neighborhood Dev</title>
+  <meta name="description" content="Nirav Sharma — B.Tech CSE student, AI explorer, open source contributor, and web developer building cool things with React, TypeScript, and the Gemini API." />
+  <meta property="og:title" content="Nirav Sharma — Friendly Neighborhood Dev" />
+  <meta property="og:description" content="Student developer building AI-powered tools, contributing to Sugar Labs, and slinging web code." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://021nirav-blip.github.io/021nirav-blip/" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Nirav Sharma — Friendly Neighborhood Dev" />
+  <meta name="twitter:description" content="Student developer building AI-powered tools and open source." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── TOKENS ── */
+    :root {
+      --red:      #bc1120;
+      --red-dim:  #8f0d18;
+      --gold:     #f5a623;
+      --blue:     #1e6bff;
+
+      --font-head: 'Syne', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+
+      --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    [data-theme="dark"] {
+      --bg:         #0e1c44;
+      --bg-card:    #132757;
+      --bg-card2:   #1a3066;
+      --border:     rgba(100,140,255,0.13);
+      --border-mid: rgba(100,140,255,0.24);
+      --text-1:     #dde8f8;
+      --text-2:     #7a95c0;
+      --text-3:     #3d5580;
+      --accent-bg:  rgba(188, 17, 32, 0.15);
+      --tag-bg:     rgba(100,140,255,0.09);
+      --tag-text:   #b8d0f0;
+    }
+
+    [data-theme="light"] {
+      --bg:         #f4f6f8;
+      --bg-card:    #ffffff;
+      --bg-card2:   #f0f2f4;
+      --border:     rgba(0,0,0,0.08);
+      --border-mid: rgba(0,0,0,0.14);
+      --text-1:     #1a1e23;
+      --text-2:     #57606a;
+      --text-3:     #8d96a0;
+      --accent-bg:  rgba(188, 17, 32, 0.08);
+      --tag-bg:     rgba(0,0,0,0.05);
+      --tag-text:   #2d3748;
+    }
+
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-head);
+      background: var(--bg);
+      color: var(--text-1);
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background var(--transition), color var(--transition);
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 99px; }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
+      height: 60px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+      transition: background var(--transition);
+    }
+
+    .nav-logo {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--red);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.82rem;
+      font-family: var(--font-mono);
+      color: var(--text-2);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--text-1); }
+
+    .theme-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-mid);
+      border-radius: var(--radius-sm);
+      color: var(--text-2);
+      cursor: pointer;
+      padding: 6px 10px;
+      font-size: 0.9rem;
+      transition: background var(--transition), color var(--transition);
+      line-height: 1;
+    }
+    .theme-btn:hover { background: var(--bg-card2); color: var(--text-1); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px; height: 2px;
+      background: var(--text-1);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    /* ── MAIN LAYOUT ── */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px clamp(1.25rem, 5vw, 3rem) 4rem;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+      align-items: center;
+      min-height: calc(100vh - 80px);
+      padding: 4rem 0 2rem;
+      position: relative;
+    }
+
+    .hero > div:first-child {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent-bg);
+      border: 1px solid rgba(188, 17, 32, 0.30);
+      border-radius: 99px;
+      padding: 4px 14px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--red);
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--red);
+      animation: blink 1.4s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.2; }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 .name { color: var(--red); }
+
+    .hero-sub {
+      font-family: var(--font-mono);
+      font-size: clamp(0.8rem, 1.8vw, 0.95rem);
+      color: var(--text-2);
+      margin-bottom: 1.75rem;
+      line-height: 1.8;
+    }
+
+    .hero-sub span { color: var(--gold); }
+
+    .hero-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      letter-spacing: 0.04em;
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:active { transform: translateY(0); }
+
+    .btn-primary {
+      background: var(--red);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(188,17,32,0.30);
+    }
+    .btn-primary:hover { background: var(--red-dim); box-shadow: 0 6px 20px rgba(188,17,32,0.40); }
+
+    .btn-ghost {
+      background: var(--bg-card);
+      color: var(--text-1);
+      border: 1px solid var(--border-mid);
+    }
+    .btn-ghost:hover { background: var(--bg-card2); }
+
+    /* Spider SVG side — replaced by GIF bg */
+    .hero-svg { display: none; }
+
+    /* ── GIF BACKGROUND ── */
+    .hero-gif-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .hero-gif-bg img {
+      position: absolute;
+      right: -2%;
+      top: 50%;
+      transform: translateY(-55%);
+      width: clamp(340px, 48vw, 640px);
+      height: auto;
+      opacity: 0.52;
+      mask-image:
+        linear-gradient(to left, rgba(0,0,0,1) 15%, rgba(0,0,0,0.6) 50%, transparent 82%),
+        linear-gradient(to top,  rgba(0,0,0,1) 25%, rgba(0,0,0,0.5) 55%, transparent 80%);
+      mask-composite: intersect;
+      -webkit-mask-image:
+        linear-gradient(to left, rgba(0,0,0,1) 15%, rgba(0,0,0,0.6) 50%, transparent 82%),
+        linear-gradient(to top,  rgba(0,0,0,1) 25%, rgba(0,0,0,0.5) 55%, transparent 80%);
+      -webkit-mask-composite: source-in;
+    }
+
+    .hero-quote {
+      margin-top: 2.5rem;
+      padding: 1rem 1.25rem;
+      background: var(--accent-bg);
+      border-left: 3px solid var(--red);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.9rem;
+      color: var(--text-2);
+      font-style: italic;
+      max-width: 500px;
+    }
+    .hero-quote strong { color: var(--text-1); font-style: normal; }
+
+    /* Dim GIF in light mode */
+    [data-theme="light"] .hero-gif-bg img {
+      opacity: 0.18;
+      filter: grayscale(0.3);
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 4rem 0; border-top: 1px solid var(--border); }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--red);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      font-weight: 800;
+      margin-bottom: 2rem;
+      letter-spacing: -0.01em;
+    }
+
+    /* ── ABOUT GRID ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .about-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+      transition: border-color var(--transition), background var(--transition);
+    }
+    .about-card:hover { border-color: var(--border-mid); background: var(--bg-card2); }
+
+    .about-card .label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-3);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+
+    .about-card .value {
+      font-size: 0.95rem;
+      color: var(--text-1);
+      font-weight: 600;
+    }
+
+    .about-card .value a {
+      color: var(--red);
+      text-decoration: none;
+    }
+    .about-card .value a:hover { text-decoration: underline; }
+
+    .about-card.wide { grid-column: 1 / -1; }
+
+    /* ── TECH STACK ── */
+    .tech-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .tech-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--tag-text);
+      transition: border-color var(--transition), background var(--transition), transform var(--transition);
+      cursor: default;
+    }
+    .tech-tag:hover {
+      border-color: var(--border-mid);
+      background: var(--bg-card);
+      transform: translateY(-2px);
+    }
+    .tech-tag .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--red), var(--gold));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s ease;
+    }
+    .project-card:hover::before { transform: scaleX(1); }
+    .project-card:hover {
+      border-color: var(--border-mid);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+    }
+
+    .project-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      padding: 3px 10px;
+      border-radius: 99px;
+      width: fit-content;
+      letter-spacing: 0.04em;
+    }
+
+    .status-live {
+      background: rgba(35, 197, 94, 0.12);
+      color: #23c55e;
+      border: 1px solid rgba(35,197,94,0.25);
+    }
+    .status-wip {
+      background: rgba(245, 166, 35, 0.12);
+      color: var(--gold);
+      border: 1px solid rgba(245,166,35,0.25);
+    }
+
+    .project-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-1);
+    }
+
+    .project-desc {
+      font-size: 0.88rem;
+      color: var(--text-2);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .project-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 0.25rem;
+    }
+
+    .stack-pill {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      padding: 2px 8px;
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      border-radius: 99px;
+      color: var(--text-2);
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--red);
+      text-decoration: none;
+      margin-top: auto;
+      transition: gap var(--transition);
+    }
+    .project-link:hover { gap: 10px; }
+    .project-link svg { width: 14px; height: 14px; }
+
+    /* ── OPEN SOURCE ── */
+    .oss-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      display: flex;
+      gap: 2rem;
+      align-items: flex-start;
+      transition: border-color var(--transition);
+    }
+    .oss-card:hover { border-color: var(--border-mid); }
+
+    .oss-icon {
+      width: 52px; height: 52px;
+      border-radius: var(--radius-md);
+      background: var(--accent-bg);
+      border: 1px solid rgba(230,36,41,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .oss-body { flex: 1; }
+    .oss-body h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+    .oss-body p {
+      font-size: 0.88rem;
+      color: var(--text-2);
+      margin-bottom: 0.75rem;
+    }
+
+    .oss-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .oss-badge {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      padding: 3px 10px;
+      border-radius: 99px;
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      color: var(--text-2);
+    }
+
+    .oss-active {
+      background: rgba(35,197,94,0.1);
+      color: #23c55e;
+      border-color: rgba(35,197,94,0.25);
+    }
+
+    /* ── CONNECT ── */
+    .connect-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .connect-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.1rem 1.25rem;
+      text-decoration: none;
+      color: var(--text-1);
+      transition: border-color var(--transition), transform var(--transition), background var(--transition);
+    }
+    .connect-card:hover {
+      border-color: var(--border-mid);
+      background: var(--bg-card2);
+      transform: translateY(-2px);
+    }
+
+    .connect-icon {
+      width: 38px; height: 38px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .connect-label { font-size: 0.8rem; color: var(--text-2); font-family: var(--font-mono); }
+    .connect-value { font-size: 0.92rem; font-weight: 600; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem clamp(1.25rem, 5vw, 3rem);
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-3);
+    }
+    footer span { color: var(--red); }
+
+    /* ── EASTER EGG TOAST ── */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: var(--bg-card);
+      border: 1px solid var(--border-mid);
+      border-radius: var(--radius-md);
+      padding: 0.9rem 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--text-1);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      z-index: 999;
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s;
+      opacity: 0;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+    .toast-emoji { margin-right: 6px; }
+
+    /* ── MOBILE NAV ── */
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      position: fixed;
+      top: 60px; left: 0; right: 0;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem clamp(1.25rem, 5vw, 3rem);
+      gap: 1.25rem;
+      z-index: 99;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      color: var(--text-2);
+      text-decoration: none;
+    }
+    .mobile-menu a:hover { color: var(--text-1); }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding: 2rem 0;
+      }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-card.wide { grid-column: 1; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    @media (max-width: 600px) {
+      .oss-card { flex-direction: column; gap: 1rem; }
+      .connect-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 380px) {
+      .connect-grid { grid-template-columns: 1fr; }
+      .hero-btns { flex-direction: column; }
+      .btn { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"><span class="toast-emoji">🕸️</span><span id="toast-msg"></span></div>
+
+  <!-- Navbar -->
+  <nav>
+    <a class="nav-logo" href="#">021nirav-blip.js</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#stack">Stack</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#oss">Open Source</a></li>
+      <li><a href="#connect">Connect</a></li>
+    </ul>
+    <div style="display:flex;gap:0.6rem;align-items:center;">
+      <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">🌙</button>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" onclick="closeMobileMenu()">About</a>
+    <a href="#stack" onclick="closeMobileMenu()">Stack</a>
+    <a href="#projects" onclick="closeMobileMenu()">Projects</a>
+    <a href="#oss" onclick="closeMobileMenu()">Open Source</a>
+    <a href="#connect" onclick="closeMobileMenu()">Connect</a>
+  </div>
+
+  <main>
+
+    <!-- ── HERO ── -->
+    <section class="hero" id="hero">
+      <!-- GIF background -->
+      <div class="hero-gif-bg">
+        <img src="spiderman.gif" alt="" aria-hidden="true" />
+      </div>
+      <div>
+        <div class="hero-tag">Available for collaboration</div>
+        <h1>Hi, I'm <span class="name">Nirav</span>.<br/>Friendly Neighborhood Dev.</h1>
+        <p class="hero-sub">
+          B.Tech CSE @ JECRC University &nbsp;·&nbsp; <span>AI Explorer</span> &nbsp;·&nbsp; Open Source Contributor<br/>
+          Building with React, TypeScript &amp; the Gemini API.<br/>
+          Currently slinging code at <span>Sugar Labs – Music Blocks</span>.
+        </p>
+        <div class="hero-btns">
+          <a class="btn btn-primary" href="#projects">View Projects</a>
+          <a class="btn btn-ghost" href="https://github.com/021nirav-blip" target="_blank" rel="noopener">GitHub Profile</a>
+          <a class="btn btn-ghost" href="mailto:021nirav@gmail.com">Say Hello</a>
+        </div>
+        <blockquote class="hero-quote">
+          <strong>"I missed the part where that's my problem"</strong><br/>
+          — Me, before realizing the bug was 100% my fault.
+        </blockquote>
+      </div>
+      <div class="hero-svg">
+        <img src="https://raw.githubusercontent.com/021nirav-blip/021nirav-blip/main/animation2.svg"
+             alt="Spider-Man swinging" width="280"
+             onerror="this.style.display='none'" />
+      </div>
+    </section>
+
+    <!-- ── ABOUT ── -->
+    <section id="about" class="reveal">
+      <p class="section-label">// who am i</p>
+      <h2 class="section-title">About Me</h2>
+      <div class="about-grid">
+        <div class="about-card">
+          <p class="label">Status</p>
+          <p class="value">B.Tech CSE Student (2025–2029)</p>
+        </div>
+        <div class="about-card">
+          <p class="label">University</p>
+          <p class="value">JECRC University, Jaipur</p>
+        </div>
+        <div class="about-card">
+          <p class="label">Focus</p>
+          <p class="value">AI-powered tools · Full Stack · Open Source</p>
+        </div>
+        <div class="about-card">
+          <p class="label">Currently working on</p>
+          <p class="value"><a href="https://github.com/sugarlabs/musicblocks" target="_blank" rel="noopener">Sugar Labs – Music Blocks ↗</a></p>
+        </div>
+        <div class="about-card">
+          <p class="label">Mastering</p>
+          <p class="value">TypeScript · Next.js · Gemini API</p>
+        </div>
+        <div class="about-card">
+          <p class="label">Spider-sense</p>
+          <p class="value">Activated (after bugs hit production)</p>
+        </div>
+        <div class="about-card wide">
+          <p class="label">Alter ego</p>
+          <p class="value">Student by day, coder by night — got bitten by a radioactive <strong>keyboard</strong>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TECH STACK ── -->
+    <section id="stack" class="reveal">
+      <p class="section-label">// my web-shooters</p>
+      <h2 class="section-title">Tech Arsenal</h2>
+      <div class="tech-grid">
+        <span class="tech-tag"><span class="dot" style="background:#F7DF1E"></span>JavaScript</span>
+        <span class="tech-tag"><span class="dot" style="background:#3178C6"></span>TypeScript</span>
+        <span class="tech-tag"><span class="dot" style="background:#61DAFB"></span>React</span>
+        <span class="tech-tag"><span class="dot" style="background:#61DAFB"></span>React Native</span>
+        <span class="tech-tag"><span class="dot" style="background:#ffffff"></span>Next.js</span>
+        <span class="tech-tag"><span class="dot" style="background:#E34F26"></span>HTML5</span>
+        <span class="tech-tag"><span class="dot" style="background:#1572B6"></span>CSS3</span>
+        <span class="tech-tag"><span class="dot" style="background:#F05032"></span>Git</span>
+        <span class="tech-tag"><span class="dot" style="background:#C21325"></span>Jest</span>
+        <span class="tech-tag"><span class="dot" style="background:#4285F4"></span>Gemini API</span>
+        <span class="tech-tag"><span class="dot" style="background:#6DB33F"></span>Tone.js</span>
+        <span class="tech-tag"><span class="dot" style="background:#336791"></span>PostgreSQL</span>
+      </div>
+    </section>
+
+    <!-- ── PROJECTS ── -->
+    <section id="projects" class="reveal">
+      <p class="section-label">// rogues gallery</p>
+      <h2 class="section-title">Signature Projects</h2>
+      <div class="projects-grid">
+
+        <article class="project-card">
+          <span class="project-status status-live">● Live</span>
+          <h3 class="project-name">Lazy Notes</h3>
+          <p class="project-desc">An AI-powered note-taking app that uses the Gemini API to summarize, rewrite, and organize your notes — so you can be productively lazy.</p>
+          <div class="project-stack">
+            <span class="stack-pill">React</span>
+            <span class="stack-pill">TypeScript</span>
+            <span class="stack-pill">Gemini API</span>
+          </div>
+          <a class="project-link" href="https://github.com/021nirav-blip/lazy-notes" target="_blank" rel="noopener">
+            View on GitHub
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        </article>
+
+        <article class="project-card">
+          <span class="project-status status-live">● Live</span>
+          <h3 class="project-name">FoodPolicer</h3>
+          <p class="project-desc">Scan your food and get an AI verdict on what you're eating — nutrition analysis, ingredient breakdown, and health scoring powered by Gemini.</p>
+          <div class="project-stack">
+            <span class="stack-pill">React Native</span>
+            <span class="stack-pill">Next.js</span>
+            <span class="stack-pill">Gemini API</span>
+            <span class="stack-pill">PostgreSQL</span>
+          </div>
+          <a class="project-link" href="https://github.com/021nirav-blip/foodpolicer" target="_blank" rel="noopener">
+            View on GitHub
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        </article>
+
+        <article class="project-card">
+          <span class="project-status status-wip">◌ In the web</span>
+          <h3 class="project-name">Project ???</h3>
+          <p class="project-desc">Spider-sense is tingling. Something is being built. Check back soon — or just watch the commit history.</p>
+          <div class="project-stack">
+            <span class="stack-pill">🕸️ classified</span>
+          </div>
+          <a class="project-link" href="https://github.com/021nirav-blip" target="_blank" rel="noopener">
+            Watch the repo
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ── OPEN SOURCE ── -->
+    <section id="oss" class="reveal">
+      <p class="section-label">// giving back</p>
+      <h2 class="section-title">Open Source</h2>
+      <div class="oss-card">
+        <div class="oss-icon">🎵</div>
+        <div class="oss-body">
+          <h3>Sugar Labs — Music Blocks</h3>
+          <p>A musical microworld for learners to explore music and programming. I contribute features, bug fixes, and tests to this open educational tool used by students worldwide.</p>
+          <div class="oss-meta">
+            <span class="oss-badge oss-active">● Active contributor</span>
+            <span class="oss-badge">Since Jan 2026</span>
+            <span class="oss-badge">JavaScript</span>
+            <span class="oss-badge">Tone.js</span>
+            <span class="oss-badge">Jest</span>
+            <a href="https://github.com/sugarlabs/musicblocks" target="_blank" rel="noopener"
+               style="font-family:var(--font-mono);font-size:0.72rem;color:var(--red);text-decoration:none;">
+              sugarlabs/musicblocks ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CONNECT ── -->
+    <section id="connect" class="reveal">
+      <p class="section-label">// swing by</p>
+      <h2 class="section-title">Let's Connect</h2>
+      <div class="connect-grid">
+        <a class="connect-card" href="https://github.com/021nirav-blip" target="_blank" rel="noopener">
+          <div class="connect-icon" style="background:rgba(255,255,255,0.06);">🐙</div>
+          <div>
+            <p class="connect-label">GitHub</p>
+            <p class="connect-value">021nirav-blip</p>
+          </div>
+        </a>
+        <a class="connect-card" href="https://linkedin.com/in/nirav-sharma-243258382" target="_blank" rel="noopener">
+          <div class="connect-icon" style="background:rgba(10,102,194,0.12);">💼</div>
+          <div>
+            <p class="connect-label">LinkedIn</p>
+            <p class="connect-value">Nirav Sharma</p>
+          </div>
+        </a>
+        <a class="connect-card" href="mailto:021nirav@gmail.com">
+          <div class="connect-icon" style="background:rgba(209,72,54,0.12);">✉️</div>
+          <div>
+            <p class="connect-label">Email</p>
+            <p class="connect-value">021nirav@gmail.com</p>
+          </div>
+        </a>
+        <a class="connect-card" href="https://021nirav-blip.github.io/021nirav-blip/" target="_blank" rel="noopener">
+          <div class="connect-icon" style="background:rgba(100,100,255,0.1);">🌐</div>
+          <div>
+            <p class="connect-label">Portfolio</p>
+            <p class="connect-value">021nirav-blip.github.io</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    Built by <span>Nirav Sharma</span> · "With great power comes great electricity bill" 🕸️
+  </footer>
+
+  <script>
+    /* ── THEME TOGGLE ── */
+    const html = document.documentElement;
+    const themeBtn = document.getElementById('themeToggle');
+    const saved = localStorage.getItem('theme') || 'dark';
+    html.setAttribute('data-theme', saved);
+    themeBtn.textContent = saved === 'dark' ? '☀️' : '🌙';
+
+    themeBtn.addEventListener('click', () => {
+      const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      themeBtn.textContent = next === 'dark' ? '☀️' : '🌙';
+      localStorage.setItem('theme', next);
+    });
+
+    /* ── HAMBURGER ── */
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+    function closeMobileMenu() { mobileMenu.classList.remove('open'); }
+
+    /* ── TOAST ── */
+    const toast = document.getElementById('toast');
+    const toastMsg = document.getElementById('toast-msg');
+    const toasts = [
+      "my spider-sense is tingling... oh wait, that's just npm install",
+      "with great power comes great electricity bill",
+      "i missed the part where that's my merge conflict",
+      "404: sleep not found",
+      "git blame always points to me 🫠"
+    ];
+    let toastTimer;
+    function showToast(msg) {
+      toastMsg.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 3200);
+    }
+
+    /* ── EASTER EGG: konami code ── */
+    const konami = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+    let konamiIdx = 0;
+    document.addEventListener('keydown', e => {
+      if (e.key === konami[konamiIdx]) {
+        konamiIdx++;
+        if (konamiIdx === konami.length) {
+          showToast('🕸️ Cheat code activated! You found the Konami web!');
+          konamiIdx = 0;
+        }
+      } else {
+        konamiIdx = 0;
+      }
+    });
+
+    /* ── EASTER EGG: click spider SVG 5x ── */
+    let clickCount = 0;
+    const spiderImg = document.querySelector('.hero-svg img');
+    if (spiderImg) {
+      spiderImg.style.cursor = 'pointer';
+      spiderImg.addEventListener('click', () => {
+        clickCount++;
+        const msgs = [1,2,3,4];
+        if (msgs.includes(clickCount)) {
+          showToast(`🕸️ Click ${clickCount}/5...`);
+        }
+        if (clickCount >= 5) {
+          showToast(toasts[Math.floor(Math.random() * toasts.length)]);
+          clickCount = 0;
+        }
+      });
+    }
+
+    /* ── SCROLL REVEAL ── */
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
