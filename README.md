@@ -46,6 +46,7 @@ With great power comes great *debugging*.
 [![Git](https://img.shields.io/badge/-Git-F05032?logo=git&logoColor=white)](https://git-scm.com/)
 [![Jest](https://img.shields.io/badge/-Jest-C21325?logo=jest&logoColor=white)](https://jestjs.io/)
 [![Gemini API](https://img.shields.io/badge/-Gemini_API-4285F4?logo=google&logoColor=white)](https://ai.google.dev/)
+[![Python](https://img.shields.io/badge/-Python-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 
 ---
 
@@ -61,11 +62,19 @@ With great power comes great *debugging*.
 
 ---
 
+### 💼 Experience
+
+| Program | Role | Project | Tech | Link |
+|---------|------|---------|------|------|
+| **C4GT DMP 2026** | DMP Intern · Contributor | **Sugar Labs — Music Blocks**: Refactor Temperament (any-EDO + non-EDO tuning, custom pitch block, scale/mode builder, temperament visualizer, import/export) — completed | JavaScript | [→ Issue #7171](https://github.com/sugarlabs/musicblocks/issues/7171) |
+
+---
+
 ### 🌟 Open Source Contributions
 
 | Project | Role | Tech | Link |
 |---------|------|------|------|
-| **Sugar Labs – Music Blocks** | Contributor (Jan 2026 – Present) | JavaScript, Tone.js, Jest | [→ View Project](https://github.com/sugarlabs/musicblocks) |
+| **Sugar Labs – Music Blocks** | Contributor & Reviewer (Jan 2026 – Present) | JavaScript, Tone.js, Jest | [→ View Project](https://github.com/sugarlabs/musicblocks) |
 
 ---
 

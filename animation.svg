@@ -17,10 +17,10 @@
 
   <!-- Spider-Man Swing Group -->
   <g>
-    <animateTransform attributeName="transform" type="translate" values="0,-15; 0,15; 0,-15" dur="3s" repeatCount="indefinite" />
+    <animateTransform attributeName="transform" type="translate" values="0,-25; 0,25; 0,-25" dur="2s" repeatCount="indefinite" />
     <g>
       <!-- Pivot pendulum off-screen to make web swing naturally -->
-      <animateTransform attributeName="transform" type="rotate" values="-5,206,-50; 5,206,-50; -5,206,-50" dur="3s" repeatCount="indefinite" />
+      
       
       <!-- Web Line (Extended down into the hand to cover the thin string) -->
       <line x1="206" y1="-50" x2="206" y2="210" stroke="#ffffff" stroke-opacity="0.8" stroke-width="2.5" />
@@ -36,7 +36,7 @@
   </ellipse>
 
   <!-- Dialogue Group -->
-  <g clip-path="url(#typing-clip)">
+  <g >
     <!-- Text 1 -->
     <text x="200" y="355" fill="#ffcc66" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">
       I'm Nirav, Your Friendly Neighborhood Developer
