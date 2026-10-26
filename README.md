@@ -8,10 +8,10 @@ With great power comes great *debugging*.
 
 - 🦸‍♂️ Alter ego: Student by day, coder by night
 - 🕷️ Spider-sense: Detects bugs *before* they crash production
-- ⌨️ Got bitten by a radioactive... **keyboard**
+- ⌨️ Got bitten by a radioactive... **Dev**
 
 > *"I missed the part where that's my problem"*  
-> — Me, before realizing the bug was my fault.
+> Me, before realizing the bug was my fault.
 
 ---
 
@@ -56,7 +56,7 @@ With great power comes great *debugging*.
 |---------|--------|------------|------|
 | **Lazy Notes** | 🚀 Live | React, TypeScript, Gemini API | [→ View Repo](https://github.com/021nirav-blip/lazy-notes) |
 | **FoodPolicer** | 🚀 Live | React Native, Next.js, Gemini API, Postgres | [→ View Repo](https://github.com/021nirav-blip/foodpolicer) |
-| More coming... | 🕸️ In Web | — | — |
+| More coming... | 🕸️ In Web | N/A | N/A |
 
 > ⚠️ *Update the repo links above once your project repos are public!*
 
@@ -66,7 +66,7 @@ With great power comes great *debugging*.
 
 | Program | Role | Project | Tech | Link |
 |---------|------|---------|------|------|
-| **C4GT DMP 2026** | DMP Intern · Contributor | **Sugar Labs — Music Blocks**: Refactor Temperament (any-EDO + non-EDO tuning, custom pitch block, scale/mode builder, temperament visualizer, import/export) — completed | JavaScript | [→ Issue #7171](https://github.com/sugarlabs/musicblocks/issues/7171) |
+| **C4GT DMP 2026** | DMP Intern · Contributor | **Sugar Labs Music Blocks**: Refactor Temperament (any-EDO + non-EDO tuning, custom pitch block, scale/mode builder, temperament visualizer, import/export), completed | JavaScript | [→ Issue #7171](https://github.com/sugarlabs/musicblocks/issues/7171) |
 
 ---
 
@@ -93,6 +93,6 @@ With great power comes great *debugging*.
 
 ---
 
-<sub>⚡ *With great power comes great electricity bill — and a lot of debugging* ⚡</sub>
+<sub>⚡ *With great power comes great electricity bill, and a lot of debugging* ⚡</sub>
 
 </div>
