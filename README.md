@@ -6,6 +6,14 @@
 
 With great power comes great *debugging*.
 
+<div align="center">
+
+  <a href="https://021nirav-blip.github.io/021nirav-blip/">
+    <img src="https://img.shields.io/badge/VIEW_MY_PORTFOLIO-D7262E?style=for-the-badge&logo=githubpages&logoColor=white" alt="View my portfolio" height="36">
+  </a>
+
+</div>
+
 - 🦸‍♂️ Alter ego: Student by day, coder by night
 - 🕷️ Spider-sense: Detects bugs *before* they crash production
 - ⌨️ Got bitten by a radioactive... **Dev**
@@ -56,9 +64,6 @@ With great power comes great *debugging*.
 |---------|--------|------------|------|
 | **Lazy Notes** | 🚀 Live | React, TypeScript, Gemini API | [→ View Repo](https://github.com/021nirav-blip/lazy-notes) |
 | **FoodPolicer** | 🚀 Live | React Native, Next.js, Gemini API, Postgres | [→ View Repo](https://github.com/021nirav-blip/foodpolicer) |
-| More coming... | 🕸️ In Web | N/A | N/A |
-
-> ⚠️ *Update the repo links above once your project repos are public!*
 
 ---
 
@@ -81,7 +86,6 @@ With great power comes great *debugging*.
 ### 📫 Swing By & Connect
 
 [![GitHub](https://img.shields.io/badge/-GitHub-181717?logo=github&logoColor=white)](https://github.com/021nirav-blip)
-[![Portfolio](https://img.shields.io/badge/-Portfolio-0a192f?logo=vercel&logoColor=white)](https://021nirav-blip.github.io/021nirav-blip/)
 [![LinkedIn](https://img.shields.io/badge/-LinkedIn-0A66C2?logo=linkedin&logoColor=white)](https://linkedin.com/in/nirav-sharma-243258382)
 [![Email](https://img.shields.io/badge/-Email-D14836?logo=gmail&logoColor=white)](mailto:021nirav@gmail.com)
 

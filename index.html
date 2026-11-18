@@ -21,7 +21,7 @@
     /* Set the theme before first paint so ink users don't get a paper flash. */
     try {
       const saved = localStorage.getItem('theme');
-      const allowed = ['paper', 'ink', 'noir'];
+      const allowed = ['paper', 'ink'];
       document.documentElement.dataset.theme = allowed.includes(saved)
         ? saved
         : (matchMedia('(prefers-color-scheme: dark)').matches ? 'ink' : 'paper');
@@ -29,6 +29,9 @@
       document.documentElement.dataset.theme = 'paper';
     }
   </script>
+
+  <!-- Cursor crew builds each section: https://github.com/Rokhbin/banna (MIT) -->
+  <script src="banna.js" data-bar="false" data-colors="#D7262E,#1F5FBF,#F2B705"></script>
 
   <style>
     /* ── TOKENS ── */
@@ -62,20 +65,6 @@
       --rule:     #3A4356;
       --grain:    rgba(237, 230, 214, 0.04);
       --halftone: rgba(237, 230, 214, 0.18);
-    }
-
-    [data-theme="noir"] {
-      --paper:    #0A0A0A;
-      --panel:    #151515;
-      --ink:      #F4F1EA;
-      --ink-soft: #B8B3A8;
-      --red:      #B10E1E;
-      --red-text: #FF5A5F;
-      --blue:     #A7A7A7;
-      --yellow:   #EDE6D6;
-      --rule:     #4A4A4A;
-      --grain:    rgba(244, 241, 234, 0.035);
-      --halftone: rgba(244, 241, 234, 0.16);
     }
 
     /* ── RESET ── */
@@ -240,8 +229,11 @@
       width: 24px;
       height: 24px;
       color: var(--red);
-      transition: top 0.1s linear;
+      animation: rail linear;
+      animation-duration: auto;
+      animation-timeline: scroll(root);
     }
+    @keyframes rail { to { top: calc(100% - 24px); } }
 
     /* ── MASTHEAD ── */
     .masthead {
@@ -562,20 +554,15 @@
       top: -39.67%;
     }
     [data-theme="paper"] .photo .art-svg,
-    [data-theme="ink"] .photo .art-gif,
-    [data-theme="noir"] .photo .art-gif { display: block; }
-    [data-theme="ink"] .photo,
-    [data-theme="noir"] .photo { aspect-ratio: 169 / 302; }
-    [data-theme="ink"] .photo img,
-    [data-theme="noir"] .photo img {
+    [data-theme="ink"] .photo .art-gif { display: block; }
+    [data-theme="ink"] .photo { aspect-ratio: 169 / 302; }
+    [data-theme="ink"] .photo img {
       width: 100%;
       height: 100%;
       left: 0;
       top: 0;
       object-fit: cover;
     }
-    [data-theme="noir"] .photo { background: #0A0A0A; }
-    [data-theme="noir"] .photo img { filter: grayscale(1) contrast(1.08); }
     .photo::before {
       content: "";
       position: absolute;
@@ -897,6 +884,15 @@
       .ghost-btn { font-size: 0.75rem; padding: 0.4rem 0.55rem; }
     }
 
+    @media (max-width: 320px) {
+      .masthead { padding-inline: 0.5rem; gap: 0.5rem; }
+      .masthead-actions { gap: 0.25rem; }
+      .wordmark { font-size: 0.95rem; }
+      .ghost-btn { font-size: 0.7rem; padding: 0.35rem 0.45rem; }
+      .menu-btn { width: 40px; height: 40px; padding: 9px; }
+      .covers { grid-template-columns: 1fr; }
+    }
+
     @media (min-width: 900px) {
       .covers { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
     }
@@ -918,9 +914,13 @@
 </head>
 <body>
 
+  <svg width="0" height="0" aria-hidden="true" style="position:absolute">
+    <symbol id="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4" /></symbol>
+  </svg>
+
   <a class="skip" href="#main">Skip to content</a>
 
-  <div class="rail" aria-hidden="true">
+  <div class="rail" aria-hidden="true" data-banna-skip>
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
       <circle cx="12" cy="13" r="3" fill="currentColor" stroke="none" />
       <path d="M12 10V7M9.2 11.2 5.4 8.4M14.8 11.2l3.8-2.8M9.2 14.2 5.4 16.6M14.8 14.2l3.8 2.4M10.6 15.6 7.8 19.6M13.4 15.6l2.8 4" />
@@ -957,7 +957,7 @@
   <main id="main">
 
     <!-- ── SPLASH ── -->
-    <section class="hero" id="top" aria-labelledby="heroTitle">
+    <section class="hero" aria-labelledby="heroTitle">
       <div>
         <button class="caption-box" id="captionBox" type="button" title="Another dateline">
           <span id="captionText" aria-live="polite">Meanwhile, in Jaipur…</span>
@@ -974,10 +974,7 @@
       <figure class="splash-frame">
         <div class="photo">
           <img class="art-svg" src="animation.svg" width="400" height="400" alt="" aria-hidden="true" decoding="async" fetchpriority="high" />
-          <picture>
-            <source srcset="spiderman.webp" type="image/webp" />
-            <img class="art-gif" src="spiderman.gif" width="169" height="302" alt="" aria-hidden="true" decoding="async" />
-          </picture>
+          <img class="art-gif" src="spiderman.webp" width="169" height="302" alt="" aria-hidden="true" decoding="async" />
         </div>
         <figcaption>Exhibit A: the friendly neighborhood dev, mid-swing.</figcaption>
       </figure>
@@ -1052,7 +1049,7 @@
             <div class="barcode" aria-hidden="true"></div>
             <a class="cover-link" href="https://github.com/021nirav-blip/lazy-notes" target="_blank" rel="noopener">
               View on GitHub
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
+              <svg viewBox="0 0 16 16" aria-hidden="true"><use href="#arrow" /></svg>
             </a>
           </div>
         </article>
@@ -1069,7 +1066,7 @@
             <div class="barcode" aria-hidden="true"></div>
             <a class="cover-link" href="https://github.com/021nirav-blip/foodpolicer" target="_blank" rel="noopener">
               View on GitHub
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
+              <svg viewBox="0 0 16 16" aria-hidden="true"><use href="#arrow" /></svg>
             </a>
           </div>
         </article>
@@ -1090,7 +1087,7 @@
             </details>
             <a class="cover-link" href="https://github.com/021nirav-blip" target="_blank" rel="noopener">
               Follow the series
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
+              <svg viewBox="0 0 16 16" aria-hidden="true"><use href="#arrow" /></svg>
             </a>
           </div>
         </article>
@@ -1117,7 +1114,7 @@
           <p class="stack">JavaScript, Tone.js, Jest</p>
           <a class="cover-link" href="https://github.com/sugarlabs/musicblocks" target="_blank" rel="noopener">
             sugarlabs/musicblocks
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
+            <svg viewBox="0 0 16 16" aria-hidden="true"><use href="#arrow" /></svg>
           </a>
         </article>
 
@@ -1131,7 +1128,7 @@
           <p class="stack">Sugar Labs, JavaScript</p>
           <a class="cover-link" href="https://github.com/sugarlabs/musicblocks/issues/7171" target="_blank" rel="noopener">
             Issue #7171
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
+            <svg viewBox="0 0 16 16" aria-hidden="true"><use href="#arrow" /></svg>
           </a>
         </article>
 
@@ -1166,7 +1163,7 @@
     Built by <strong>Nirav Sharma</strong>. With great power comes great electricity bill.
   </footer>
 
-  <!-- True believers: the wordmark answers to 021. -->
+  <!-- True believers: read Issue #003. -->
 
   <noscript>
     <style>.reveal { opacity: 1; transform: none; }</style>
@@ -1186,7 +1183,6 @@
     const captionText = document.getElementById('captionText');
     const thwipBtn = document.getElementById('thwipBtn');
     const spiderSense = document.getElementById('spiderSense');
-    const wordmark = document.querySelector('.wordmark');
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     /* Keep layout offsets in sync with the real masthead height (320px wraps). */
@@ -1199,7 +1195,7 @@
     /* Theme: stored choice wins, otherwise follow the OS on first visit. */
 
     function paintTheme() {
-      const dark = html.dataset.theme === 'ink' || html.dataset.theme === 'noir';
+      const dark = html.dataset.theme === 'ink';
       themeBtn.textContent = dark ? 'Switch to paper' : 'Switch to ink';
       themeBtn.setAttribute('aria-pressed', String(dark));
     }
@@ -1209,12 +1205,6 @@
       html.dataset.theme = next;
       try { localStorage.setItem('theme', next); } catch (error) {}
       paintTheme();
-    }
-
-    function unlockNoir() {
-      if (html.dataset.theme === 'noir') { applyTheme('paper'); return; }
-      applyTheme('noir');
-      triggerSpiderSense();
     }
 
     let themeSwitching = false;
@@ -1288,10 +1278,6 @@
       shot.className = 'web-shot';
       shot.setAttribute('aria-hidden', 'true');
 
-      while (document.querySelectorAll('.web-shot').length > 5) {
-        document.querySelector('.web-shot').remove();
-      }
-
       if (!reduceMotion) {
         const line = document.createElement('div');
         line.className = 'web-line';
@@ -1336,12 +1322,11 @@
       }, reduceMotion ? 1600 : 2200);
     }
 
-    /* Secret codes: Konami pulse and Earth-021 noir. */
+    /* Secret code: Konami pulse. */
     const isTypingTarget = (target) =>
       target instanceof Element && Boolean(target.closest('input, textarea, select, [contenteditable="true"]'));
     const konami = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
     let konamiBuffer = [];
-    let noirBuffer = [];
 
     document.addEventListener('keydown', (event) => {
       if (event.repeat || event.ctrlKey || event.metaKey || event.altKey || isTypingTarget(event.target)) return;
@@ -1353,33 +1338,15 @@
         konamiBuffer = [];
         triggerSpiderSense();
       }
-
-      if (key.length === 1 && /\d/.test(key)) {
-        noirBuffer.push(key);
-        if (noirBuffer.length > 3) noirBuffer.shift();
-        if (noirBuffer.join('') === '021') {
-          noirBuffer = [];
-          unlockNoir();
-        }
-      } else {
-        noirBuffer = [];
-      }
-    });
-
-    wordmark.addEventListener('click', (event) => {
-      if (event.detail === 3) {
-        event.preventDefault();
-        unlockNoir();
-      }
     });
 
     console.log('%cTHWIP! You found the secret.', 'font: 700 14px/1.4 monospace; color: #D7262E;');
-    console.log('%cTry the Konami code, type 021, or read Issue #003.', 'font: 12px/1.4 monospace; color: #888;');
+    console.log('%cTry the Konami code or read Issue #003.', 'font: 12px/1.4 monospace; color: #888;');
 
     /* Panel reveals */
     const reveals = document.querySelectorAll('.reveal');
 
-    if ('IntersectionObserver' in window && !reduceMotion) {
+    if (!reduceMotion) {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
@@ -1392,27 +1359,6 @@
     } else {
       reveals.forEach((el) => el.classList.add('in'));
     }
-
-    /* Scroll rail */
-    const rail = document.querySelector('.rail');
-    const railSpider = rail ? rail.querySelector('svg') : null;
-    let ticking = false;
-
-    function updateRail() {
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
-      if (railSpider) {
-        railSpider.style.top = (progress * (rail.clientHeight - railSpider.clientHeight)) + 'px';
-      }
-      ticking = false;
-    }
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        ticking = true;
-        requestAnimationFrame(updateRail);
-      }
-    }, { passive: true });
-    if (rail) updateRail();
 
     /* Entrance */
     requestAnimationFrame(() => document.body.classList.add('loaded'));
